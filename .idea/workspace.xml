@@ -29,7 +29,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python.01_PyQt_basic">
+  <component name="RunManager" selected="Python.02_PyQt_widget">
     <configuration name="01_PyQt_basic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GA-Mario" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -43,6 +43,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_PyQt5/01_PyQt_basic.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="02_PyQt_widget" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GA-Mario" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab_PyQt5" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_PyQt5/02_PyQt_widget.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -74,6 +95,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.02_PyQt_widget" />
         <item itemvalue="Python.01_PyQt_basic" />
         <item itemvalue="Python.new" />
       </list>
@@ -97,21 +119,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="217" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1625488038461" />
-    <state width="1921" height="277" key="GridCell.Tab.0.bottom" timestamp="1625657602161">
+    <state width="1921" height="277" key="GridCell.Tab.0.bottom" timestamp="1625662255177">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1625657602161" />
-    <state width="1921" height="277" key="GridCell.Tab.0.center" timestamp="1625657602161">
+    <state width="1921" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1625662255177" />
+    <state width="1921" height="277" key="GridCell.Tab.0.center" timestamp="1625662255177">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1625657602161" />
-    <state width="1921" height="277" key="GridCell.Tab.0.left" timestamp="1625657602161">
+    <state width="1921" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1625662255177" />
+    <state width="1921" height="277" key="GridCell.Tab.0.left" timestamp="1625662255176">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1625657602161" />
-    <state width="1921" height="277" key="GridCell.Tab.0.right" timestamp="1625657602161">
+    <state width="1921" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1625662255176" />
+    <state width="1921" height="277" key="GridCell.Tab.0.right" timestamp="1625662255177">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1625657602161" />
+    <state width="1921" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1625662255177" />
   </component>
 </project>
