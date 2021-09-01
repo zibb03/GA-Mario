@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6d3cb5a6-f208-4123-b8cb-527c459e8233" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab_Mario/04_Quiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_Mario/04_Quiz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_Mario/06_Quiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_Mario/06_Quiz.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,29 +31,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.07_Get_Current_Screen_Tile">
-    <configuration name="03_Quiz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="GA-Mario" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab_PyQt5" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_PyQt5/03_Quiz.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="04_Quiz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.09_Quiz">
+    <configuration name="08_Quiz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GA-Mario" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -65,7 +44,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_Mario/04_Quiz.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_Mario/08_Quiz.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -74,7 +53,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="06_Get_Full_Screen" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="09_Get_Enemy_Drawn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GA-Mario" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -86,7 +65,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_Mario/06_Get_Full_Screen.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_Mario/09_Get_Enemy_Drawn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -95,7 +74,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="06_Quiz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="09_Quiz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GA-Mario" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -107,7 +86,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_Mario/06_Quiz.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_Mario/09_Quiz.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -116,7 +95,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="07_Get_Current_Screen_Tile" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="10_Get_Enemy_Position" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GA-Mario" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -128,7 +107,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_Mario/07_Get_Current_Screen_Tile.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_Mario/10_Get_Enemy_Position.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="11_Get_Distance" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GA-Mario" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lab_Mario" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lab_Mario/11_Get_Distance.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.07_Get_Current_Screen_Tile" />
-        <item itemvalue="Python.06_Quiz" />
-        <item itemvalue="Python.04_Quiz" />
-        <item itemvalue="Python.06_Get_Full_Screen" />
-        <item itemvalue="Python.03_Quiz" />
+        <item itemvalue="Python.09_Quiz" />
+        <item itemvalue="Python.08_Quiz" />
+        <item itemvalue="Python.10_Get_Enemy_Position" />
+        <item itemvalue="Python.09_Get_Enemy_Drawn" />
+        <item itemvalue="Python.11_Get_Distance" />
       </list>
     </recent_temporary>
   </component>
@@ -165,30 +165,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="217" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1625488038461" />
-    <state width="1893" height="193" key="GridCell.Tab.0.bottom" timestamp="1628539659137">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1893" height="193" key="GridCell.Tab.0.bottom" timestamp="1630493162625">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1893" height="156" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627915568657" />
-    <state width="1893" height="193" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1628539659137" />
-    <state width="1893" height="193" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1628513461492" />
-    <state width="1893" height="193" key="GridCell.Tab.0.center" timestamp="1628539659137">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1893" height="193" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1630394687653" />
+    <state width="1893" height="193" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1630391354095" />
+    <state width="1893" height="193" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1630493162625" />
+    <state width="1893" height="193" key="GridCell.Tab.0.center" timestamp="1630493162624">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1893" height="156" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627915568657" />
-    <state width="1893" height="193" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1628539659137" />
-    <state width="1893" height="193" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1628513461492" />
-    <state width="1893" height="193" key="GridCell.Tab.0.left" timestamp="1628539659137">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1893" height="193" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1630394687653" />
+    <state width="1893" height="193" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1630391354094" />
+    <state width="1893" height="193" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1630493162624" />
+    <state width="1893" height="193" key="GridCell.Tab.0.left" timestamp="1630493162624">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1893" height="156" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627915568657" />
-    <state width="1893" height="193" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1628539659137" />
-    <state width="1893" height="193" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1628513461492" />
-    <state width="1893" height="193" key="GridCell.Tab.0.right" timestamp="1628539659137">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1893" height="193" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1630394687653" />
+    <state width="1893" height="193" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1630391354094" />
+    <state width="1893" height="193" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1630493162624" />
+    <state width="1893" height="193" key="GridCell.Tab.0.right" timestamp="1630493162625">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1893" height="156" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627915568657" />
-    <state width="1893" height="193" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1628539659137" />
-    <state width="1893" height="193" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1628513461492" />
+    <state width="1893" height="193" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1630394687653" />
+    <state width="1893" height="193" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1630391354095" />
+    <state width="1893" height="193" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1630493162625" />
     <state width="1893" height="332" key="GridCell.Tab.1.bottom" timestamp="1626876697281">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -213,14 +213,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="345" y="76" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1627304226407" />
+    <state x="612" y="99" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1629115437329">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="612" y="99" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1629115437329" />
     <state x="425" y="194" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1627908044602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="425" y="194" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1627908044602" />
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-1" timestamp="1627298650832">
+    <state x="-7" y="0" width="974" height="1047" key="dock-window-1" timestamp="1628685023655">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1627298650832" />
+    <state x="-7" y="0" width="974" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1628685023655" />
     <state x="-7" y="0" width="974" height="1047" key="dock-window-2" timestamp="1627298772697">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -229,9 +233,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="572" y="181" width="775" height="678" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627908581430" />
-    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1628511748563">
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1630328186746">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1628511748563" />
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1630328186746" />
   </component>
 </project>

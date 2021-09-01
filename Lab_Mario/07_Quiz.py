@@ -1,4 +1,5 @@
-# 마리오 띄우고 플레이
+# [도전과제9]
+# 07. get_current_screen_tile.py 에서 가져온 현재 타일 정보 그리기
 
 import retro
 import sys
@@ -65,12 +66,8 @@ class MyApp(QWidget):
     def paintEvent(self, event):
         self.ram = self.env.get_ram()
 
+        # 위쪽 타일 배열
         full_screen_tiles = self.ram[0x0500:0x069F + 1]
-        #self.i = full_screen_tiles.shape
-
-        # print(full_screen_tiles.shape)
-        #print(full_screen_tiles)
-
         full_screen_tile_count = full_screen_tiles.shape[0]
 
         # 정수여야 해서 / 2개
@@ -79,7 +76,23 @@ class MyApp(QWidget):
 
         full_screen_tiles = np.concatenate((full_screen_page1_tile, full_screen_page2_tile), axis=1).astype(np.int)
 
-        #print(type(full_screen_tiles[4][0]))
+        # 아래쪽 타일 배열
+        # 0x071A	Current screen (in level)
+        # 현재 화면이 속한 페이지 번호
+        current_screen_page = self.ram[0x071A]
+        # 0x071C	ScreenEdge X-Position, loads next screen when player past it?
+        # 페이지 속 현재 화면 위치
+        screen_position = self.ram[0x071C]
+        # 화면 오프셋
+        screen_offset = (256 * current_screen_page + screen_position) % 512
+        # 타일 화면 오프셋
+        screen_tile_offset = screen_offset // 16
+
+        # 현재 화면 추출
+        screen_tiles = np.concatenate((full_screen_tiles, full_screen_tiles), axis=1)[:,
+                       screen_tile_offset:screen_tile_offset + 16]
+
+        #print(screen_tiles)
 
         # 그리기 도구
         painter = QPainter()
@@ -104,30 +117,10 @@ class MyApp(QWidget):
         # 직사각형 (왼쪽 위, 오른쪽 아래)
         # 1200, 448
 
-        # for i in range(416):
-        #     cnt += 1
-        #     if cnt % 2 != 0:
-        #         painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
-        #         # 브러쉬 설정 (채우기)
-        #         painter.setBrush(QBrush(Qt.white))
-        #         painter.drawRect(480 + a, 0 + b, 10, 10)
-        #     else:
-        #         painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
-        #         # 브러쉬 설정 (채우기)
-        #         painter.setBrush(QBrush(Qt.gray))
-        #         painter.drawRect(480 + a, 0 + b, 10, 10)
-        #     a += 10
-        #     #print(cnt)
-        #     if cnt % 32 == 0:
-        #         a = 0
-        #         b += 10
-
         t = 0
 
-        #print(full_screen_tiles[0][0])
-
         for i in range(416):
-            print(t, i)
+            #print(t, i)
             cnt += 1
             if full_screen_tiles[t][i % 32] == 0:
                 painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
@@ -142,6 +135,26 @@ class MyApp(QWidget):
             a += 10
             #print(cnt)
             if cnt % 32 == 0:
+                a = 0
+                b += 10
+                t += 1
+        t = 0
+        for i in range(208):
+            # print(t, i)
+            cnt += 1
+            if screen_tiles[t][i % 16] == 0:
+                painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
+                # 브러쉬 설정 (채우기)
+                painter.setBrush(QBrush(Qt.gray))
+                painter.drawRect(480 + a, 20 + b, 10, 10)
+            else:
+                painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
+                # 브러쉬 설정 (채우기)
+                painter.setBrush(QBrush(Qt.blue))
+                painter.drawRect(480 + a, 20 + b, 10, 10)
+            a += 10
+            # print(cnt)
+            if cnt % 16 == 0:
                 a = 0
                 b += 10
                 t += 1
@@ -187,6 +200,8 @@ class MyApp(QWidget):
         self.env.step(self.press_buttons)
         self.update_screen()
         self.update()
+        #print(self.press_buttons)
+
         #print(self.screen)
 
     # 키를 누를 때
