@@ -1,5 +1,5 @@
-# [도전과제12]
-# 02.keras_neural_network.py 에서 만든 신경망으로 마리오 게임 플레이하기
+# [도전과제13]
+# 04. chromosomes.py 에서 만든 염색체로 마리오 게임 플레이하고 [도전과제12] 실행 속도 비교하기
 
 import retro
 import sys
@@ -7,7 +7,31 @@ from PyQt5.QtGui import QImage, QPixmap, QPainter, QPen, QBrush, QColor
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import QApplication,\
     QWidget, QLabel, QPushButton
+import tensorflow as tf
 import numpy as np
+
+relu = lambda x: np.maximum(0, x)
+sigmoid = lambda x: 1.0 / (1.0 + np.exp(-x))
+
+class Chromosome:
+    def __init__(self):
+        self.w1 = np.random.uniform(low=-1, high=1, size=(13 * 16, 9))
+        self.b1 = np.random.uniform(low=-1, high=1, size=(9,))
+
+        self.w2 = np.random.uniform(low=-1, high=1, size=(9, 6))
+        self.b2 = np.random.uniform(low=-1, high=1, size=(6,))
+
+        self.distance = 0
+        self.max_distance = 0
+        self.frames = 0
+        self.stop_frames = 0
+        self.win = 0
+
+    def predict(self, data):
+        l1 = relu(np.matmul(data, self.w1) + self.b1)
+        output = sigmoid(np.matmul(l1, self.w2) + self.b2)
+        result = (output > 0.5).astype(np.int)
+        return result
 
 class MyApp(QWidget):
     def __init__(self):
@@ -83,10 +107,52 @@ class MyApp(QWidget):
         b = 0
         t = 0
 
+        enemy_drawn = self.ram[0x000F:0x0013 + 1]
+
+        for i in range(5):
+            # print(enemy_drawn[i])
+            if enemy_drawn[i] == 1:
+                enemy_horizon_position = self.ram[0x006E:0x0072 + 1]
+                # 0x0087-0x008B	Enemy x position on screen
+                # 자신이 속한 페이지 속 x 좌표
+                enemy_screen_position_x = self.ram[0x0087:0x008B + 1]
+                # 0x00CF-0x00D3	Enemy y pos on screen
+                enemy_position_y = self.ram[0x00CF:0x00D3 + 1]
+                # 적 x 좌표
+                enemy_position_x = (enemy_horizon_position * 256 + enemy_screen_position_x) % 512
+
+                # print(enemy_position_x, enemy_position_y)
+
+                # 적 타일 좌표
+                enemy_tile_position_x = (enemy_position_x + 8) // 16
+                enemy_tile_position_y = (enemy_position_y - 8) // 16 - 1
+
+                # print(enemy_tile_position_x, enemy_tile_position_y)
+
+                # painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
+                # 브러쉬 설정 (채우기)
+                # painter.setBrush(QBrush(Qt.red))
+                # print(1)
+                # painter.drawRect(480 + enemy_tile_position_x[i] * 10, enemy_tile_position_y[i] * 10, 10, 10)
+                # print(2)
+                print(enemy_tile_position_x[i], enemy_tile_position_y[i])
+                x = enemy_tile_position_x[i]
+                y = enemy_tile_position_y[i]
+                if y >= 0 and y < 13 and x >= 0 and x < 32:
+                    full_screen_tiles[y][x] = 2
+
+        t = 0
+
         # 위 타일
         for i in range(416):
             cnt += 1
-            if full_screen_tiles[t][i % 32] == 0:
+            if full_screen_tiles[t][i % 32] == 2:
+                # print(t, i % 16)
+                painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
+                # 브러쉬 설정 (채우기)
+                painter.setBrush(QBrush(Qt.red))
+                painter.drawRect(480 + a, 0 + b, 10, 10)
+            elif full_screen_tiles[t][i % 32] == 0:
                 painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
                 # 브러쉬 설정 (채우기)
                 painter.setBrush(QBrush(Qt.gray))
@@ -102,32 +168,6 @@ class MyApp(QWidget):
                 b += 10
                 t += 1
         t = 0
-
-        # 0x000F-0x0013	Enemy drawn? Max 5 enemies at once.
-        # 0 - No
-        # 1 - Yes (not so much drawn as "active" or something)
-        enemy_drawn = self.ram[0x000F:0x0013 + 1]
-
-        for i in range(5):
-            #print(enemy_drawn[i])
-            if enemy_drawn[i] == 1:
-                enemy_horizon_position = self.ram[0x006E:0x0072 + 1]
-                # 0x0087-0x008B	Enemy x position on screen
-                # 자신이 속한 페이지 속 x 좌표
-                enemy_screen_position_x = self.ram[0x0087:0x008B + 1]
-                # 0x00CF-0x00D3	Enemy y pos on screen
-                enemy_position_y = self.ram[0x00CF:0x00D3 + 1]
-                # 적 x 좌표
-                enemy_position_x = (enemy_horizon_position * 256 + enemy_screen_position_x) % 512
-
-                # 적 타일 좌표
-                enemy_tile_position_x = (enemy_position_x + 8) // 16
-                enemy_tile_position_y = (enemy_position_y - 8) // 16 - 1
-
-                x = enemy_tile_position_x[i]
-                y = enemy_tile_position_y[i]
-                if y >= 0 and y < 13 and x >= 0 and x < 32:
-                    full_screen_tiles[y][x] = 2
 
         # 현재 화면 추출
         screen_tiles = np.concatenate((full_screen_tiles, full_screen_tiles), axis=1)[:,
@@ -173,6 +213,17 @@ class MyApp(QWidget):
         painter.setBrush(QBrush(Qt.blue))
         painter.drawRect(480 + player_tile_position_x * 10, 150 + player_tile_position_y * 10, 10, 10)
 
+        result = Chromosome()
+        screen_tiles_2 = screen_tiles.reshape((13 * 16, ))
+        a = result.predict(screen_tiles_2)
+
+        self.press_buttons[0] = a[0]
+        self.press_buttons[4] = a[1]
+        self.press_buttons[5] = a[2]
+        self.press_buttons[6] = a[3]
+        self.press_buttons[7] = a[4]
+        self.press_buttons[8] = a[5]
+
     def update_screen(self):
         # 화면 가져오기
         self.screen = self.env.get_screen()
@@ -183,10 +234,18 @@ class MyApp(QWidget):
         self.label_image.setPixmap(pixmap)
 
     def game_timer(self):
+        # self.press_buttons[0] = result[0]
+        # self.press_buttons[4] = result[1]
+        # self.press_buttons[5] = result[2]
+        # self.press_buttons[6] = result[3]
+        # self.press_buttons[7] = result[4]
+        # self.press_buttons[8] = result[5]
+
         # 키 배열: B, NULL, SELECT, START, U, D, L, R, A
         # b = 66, u = 16777235, d = 16777237, l = 16777234, r = 16777236, a = 65
         # self.env.step(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0]))
         self.env.step(self.press_buttons)
+        #self.env.step(result)
         self.update_screen()
         self.update()
 

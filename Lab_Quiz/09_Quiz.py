@@ -18,7 +18,7 @@ class MyApp(QWidget):
         self.setWindowTitle('GA Mario')
 
         self.press_buttons = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-        #self.full_screen_tiles = np.array([0])
+        #self.full_screen_tiles = np.array([0])rms
         #self.i = 0
 
         # 이미지
@@ -53,6 +53,8 @@ class MyApp(QWidget):
         pixmap = QPixmap(qimage)
         pixmap = pixmap.scaled(480, 448, Qt.IgnoreAspectRatio)
         self.label_image.setPixmap(pixmap)
+
+        self.frame = 0
 
         # 타이머 생성
         self.qtimer = QTimer(self)
@@ -97,6 +99,7 @@ class MyApp(QWidget):
         # Gray 107 107 107
         # RGB 색상으로 펜 설정
         c = full_screen_tiles.shape[0]
+        #print(full_screen_tiles.shape[0], full_screen_tiles.shape[1])
 
         cnt = 0
         a = 0
@@ -108,12 +111,52 @@ class MyApp(QWidget):
         # # 직사각형 (왼쪽 위, 오른쪽 아래)
         # # 1200, 448
 
+        enemy_drawn = self.ram[0x000F:0x0013 + 1]
+
+        for i in range(5):
+            #print(enemy_drawn[i])
+            if enemy_drawn[i] == 1:
+                enemy_horizon_position = self.ram[0x006E:0x0072 + 1]
+                # 0x0087-0x008B	Enemy x position on screen
+                # 자신이 속한 페이지 속 x 좌표
+                enemy_screen_position_x = self.ram[0x0087:0x008B + 1]
+                # 0x00CF-0x00D3	Enemy y pos on screen
+                enemy_position_y = self.ram[0x00CF:0x00D3 + 1]
+                # 적 x 좌표
+                enemy_position_x = (enemy_horizon_position * 256 + enemy_screen_position_x) % 512
+
+                #print(enemy_position_x, enemy_position_y)
+
+                # 적 타일 좌표
+                enemy_tile_position_x = (enemy_position_x + 8) // 16
+                enemy_tile_position_y = (enemy_position_y - 8) // 16 - 1
+
+                # print(enemy_tile_position_x, enemy_tile_position_y)
+
+                # painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
+                # 브러쉬 설정 (채우기)
+                # painter.setBrush(QBrush(Qt.red))
+                # print(1)
+                # painter.drawRect(480 + enemy_tile_position_x[i] * 10, enemy_tile_position_y[i] * 10, 10, 10)
+                # print(2)
+                # print(enemy_tile_position_x[i], enemy_tile_position_y[i])
+                x = enemy_tile_position_x[i]
+                y = enemy_tile_position_y[i]
+                if y >= 0 and y < 13 and x >= 0 and x < 32:
+                    full_screen_tiles[y][x] = 2
+
         t = 0
 
         # 위 타일
         for i in range(416):
             cnt += 1
-            if full_screen_tiles[t][i % 32] == 0:
+            if full_screen_tiles[t][i % 32] == 2:
+                #print(t, i % 16)
+                painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
+                # 브러쉬 설정 (채우기)
+                painter.setBrush(QBrush(Qt.red))
+                painter.drawRect(480 + a, 0 + b, 10, 10)
+            elif full_screen_tiles[t][i % 32] == 0:
                 painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
                 # 브러쉬 설정 (채우기)
                 painter.setBrush(QBrush(Qt.gray))
@@ -130,65 +173,15 @@ class MyApp(QWidget):
                 t += 1
         t = 0
 
-        # 0x000F-0x0013	Enemy drawn? Max 5 enemies at once.
-        # 0 - No
-        # 1 - Yes (not so much drawn as "active" or something)
-        enemy_drawn = self.ram[0x000F:0x0013 + 1]
-
-        for i in range(5):
-            #print(enemy_drawn[i])
-            if enemy_drawn[i] == 1:
-                enemy_horizon_position = self.ram[0x006E:0x0072 + 1]
-                # 0x0087-0x008B	Enemy x position on screen
-                # 자신이 속한 페이지 속 x 좌표
-                enemy_screen_position_x = self.ram[0x0087:0x008B + 1]
-                # 0x00CF-0x00D3	Enemy y pos on screen
-                enemy_position_y = self.ram[0x00CF:0x00D3 + 1]
-                # 적 x 좌표
-                enemy_position_x = (enemy_horizon_position * 256 + enemy_screen_position_x) % 512
-
-                # print(enemy_position_x, enemy_position_y)
-
-                # 적 타일 좌표
-                enemy_tile_position_x = (enemy_position_x + 8) // 16
-                enemy_tile_position_y = (enemy_position_y - 8) // 16 - 1
-
-                # print(enemy_tile_position_x, enemy_tile_position_y)
-
-                # painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
-                # 브러쉬 설정 (채우기)
-                # painter.setBrush(QBrush(Qt.red))
-                # print(1)
-                # painter.drawRect(480 + enemy_tile_position_x[i] * 10, enemy_tile_position_y[i] * 10, 10, 10)
-                # print(2)
-                #print(enemy_tile_position_x[i], enemy_tile_position_y[i])
-                x = enemy_tile_position_x[i]
-                y = enemy_tile_position_y[i]
-                if y >= 0 and y < 13 and x >= 0 and x < 32:
-                    full_screen_tiles[y][x] = 2
-
         # 현재 화면 추출
         screen_tiles = np.concatenate((full_screen_tiles, full_screen_tiles), axis=1)[:,
                        screen_tile_offset:screen_tile_offset + 16]
         #print(screen_tiles)
 
-        # 밑 타일
-        # for i in range(13):
-        #     for j in range(16):
-        #         if screen_tiles[i][i] == 0:
-        #             painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
-        #             # 브러쉬 설정 (채우기)
-        #             painter.setBrush(QBrush(Qt.gray))
-        #             painter.drawRect(480 + a, 20 + b, 10, 10)
-        #         else:
-        #             painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
-        #             # 브러쉬 설정 (채우기)
-        #             painter.setBrush(QBrush(Qt.cyan))
-        #             painter.drawRect(480 + a, 20 + b, 10, 10)
-
         for i in range(208):
             cnt += 1
             if screen_tiles[t][i % 16] == 2:
+                #print(t, i % 16)
                 painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
                 # 브러쉬 설정 (채우기)
                 painter.setBrush(QBrush(Qt.red))
@@ -210,21 +203,51 @@ class MyApp(QWidget):
                 b += 10
                 t += 1
 
-        # 0x03AD	Player x pos within current screen offset
-        # 현재 화면 속 플레이어 x 좌표
-        player_position_x = self.ram[0x03AD]
-        # 0x03B8	Player y pos within current screen
-        # 현재 화면 속 플레이어 y 좌표
-        player_position_y = self.ram[0x03B8]
+        fitness = 0
+        win = 0
+        player_horizon_position = self.ram[0x006D]
+        # 0x0086	Player x position on screen
+        # 페이지 속 플레이어 x 좌표
+        player_screen_position_x = self.ram[0x0086]
+        distance = 256 * player_horizon_position + player_screen_position_x
 
-        # 타일 좌표로 변환
-        player_tile_position_x = (player_position_x + 8) // 16
-        player_tile_position_y = (player_position_y + 8) // 16 - 1
+        player_float_state = self.ram[0x001D]
+        if player_float_state == 0x03:
+            win = 1
+            # 1.
+            fitness += distance * 2
+            # 2.
+            fitness += distance - self.frame
+            # 3.
+            fitness += win * 1000000
+            print(fitness)
+            print('클리어')
 
-        painter.setPen(QPen(QColor.fromRgb(0, 0, 0), 1.0, Qt.SolidLine))
-        # 브러쉬 설정 (채우기)
-        painter.setBrush(QBrush(Qt.blue))
-        painter.drawRect(480 + player_tile_position_x * 10, 150 + player_tile_position_y * 10, 10, 10)
+        # 0x000E	Player's state
+        # 0x06, 0x0B - 게임 오버
+        player_state = self.ram[0x000E]
+        if player_state == 0x06 or player_state == 0x0B:
+            print('게임 오버 1')
+            # 1.
+            fitness += distance * 2
+            # 2.
+            fitness += distance - self.frame
+            # 3.
+            fitness += win * 1000000
+            print(fitness)
+
+        # 0x00B5	Player vertical screen position
+        # anywhere below viewport is >1
+        player_vertical_screen_position = self.ram[0x00B5]
+        if player_vertical_screen_position >= 2:
+            print('게임 오버 2')
+            # 1.
+            fitness += distance * 2
+            # 2.
+            fitness += distance - self.frame
+            # 3.
+            fitness += win * 1000000
+            print(fitness)
 
     def update_screen(self):
         # 화면 가져오기
@@ -240,6 +263,7 @@ class MyApp(QWidget):
         # 키 배열: B, NULL, SELECT, START, U, D, L, R, A
         # b = 66, u = 16777235, d = 16777237, l = 16777234, r = 16777236, a = 65
         # self.env.step(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0]))
+        self.frame += 1
         self.env.step(self.press_buttons)
         self.update_screen()
         self.update()
